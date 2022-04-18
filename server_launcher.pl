@@ -1,3 +1,5 @@
+#!/usr/bin/perl -l
+
 use Time::HiRes qw(usleep);
 
 print "\nAkka's Linux Server Launcher\n";
