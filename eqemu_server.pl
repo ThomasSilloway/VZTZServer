@@ -47,7 +47,7 @@ if ($Config{osname} =~ /freebsd|linux/i) {
     }
 }
 
-print "OS: " . $OS
+print "OS: " . $OS;
 
 #############################################
 # internet check
