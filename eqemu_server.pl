@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -l
 
 ###########################################################
 #::: General EQEmu Server Administration Script
@@ -46,6 +46,8 @@ if ($Config{osname} =~ /freebsd|linux/i) {
         $os_flavor = "red_hat";
     }
 }
+
+print "OS: " . $OS
 
 #############################################
 # internet check

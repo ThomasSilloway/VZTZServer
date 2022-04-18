@@ -24,7 +24,7 @@ my $print_status_once = 0;
 
 sub print_line
 {
-    print $_[0] . '\n'
+    print $_[0] . ' \n'
 }
 
 print_line('Parsing args...');
