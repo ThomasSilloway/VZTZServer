@@ -6,6 +6,7 @@ my $base_binary_path = "./";
 if (-e "bin/zone") {
     $base_binary_path = "./bin/";
 }
+$base_binary_path = "/home/eqemu/server_build/bin/"
 
 #::: Arguments
 # zones="40" = specified x number of zones to launch
@@ -18,6 +19,8 @@ if (-e "bin/zone") {
 
 my $kill_server       = 0;
 my $print_status_once = 0;
+
+print 'Parsing args...'
 
 while ($ARGV[$n]) {
     print $n . ': ' . $ARGV[$n] . "\n" if $Debug;
@@ -49,6 +52,7 @@ while ($ARGV[$n]) {
     $n++;
 }
 
+print 'checking if already launched'
 if ($kill_server == 0 && $print_status_once == 0) {
     $l_processes  = `ps aux`;
     my @processes = split("\n", $l_processes);
@@ -64,6 +68,7 @@ if ($kill_server == 0 && $print_status_once == 0) {
     }
 }
 
+print 'Checking if need to kill server'
 if (!$print_status_once && $kill_server) {
     $l_processes  = `ps aux`;
     my @processes = split("\n", $l_processes);
@@ -138,7 +143,7 @@ sub print_status
         print "\r";
     }
 }
-
+print 'start while loop'
 while (1) {
     $zone_process_count        = 0;
     $world_process_count       = 0;
@@ -147,6 +152,7 @@ while (1) {
     $loginserver_process_count = 0;
 
     $l_processes  = `ps aux`;
+    print 'process parsing'
     my @processes = split("\n", $l_processes);
     foreach my $val (@processes) {
         if ($val =~ /\.\/ucs/i) {
@@ -165,10 +171,11 @@ while (1) {
             $loginserver_process_count++;
         }
     }
-
+    print 'print status'
     print_status();
 
     if (!$print_status_once) {
+        print 'print status login server'
         #::: Loginserver Process
         if ($use_loginserver) {
             for ($i = $loginserver_process_count; $i < 1; $i++) {
@@ -178,6 +185,7 @@ while (1) {
             }
         }
         #::: World Process
+        print 'print status world'
         for ($i = $world_process_count; $i < 1; $i++) {
             system($base_binary_path . "world " . $pipe_redirection . " " . $background_start);
             $world_process_count++;
@@ -185,6 +193,7 @@ while (1) {
             sleep(1);
         }
         #::: Zone Processes
+        print 'print status zones'
         for ($i = $zone_process_count; $i < $zones_to_launch; $i++) {
             if ($zone_start_in_background == 1) {
                 system("start /b zone > nul");
@@ -197,6 +206,7 @@ while (1) {
             usleep(100);
         }
         #::: Queryserv Process
+        print 'print status queryserv'
         if ($no_query_serv != 1) {
             for ($i = $queryserv_process_count; $i < 1; $i++) {
                 system($base_binary_path . "queryserv " . $pipe_redirection . " " . $background_start);
@@ -204,6 +214,7 @@ while (1) {
             }
         }
         #::: UCS Process
+        print 'print status ucs'
         for ($i = $ucs_process_count; $i < 1; $i++) {
             system($base_binary_path . "ucs " . $pipe_redirection . " " . $background_start);
             print_status();
