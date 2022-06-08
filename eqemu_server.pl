@@ -58,7 +58,7 @@ if (-e "skip_internet_connection_check.txt") {
 #############################################
 # skip self update
 #############################################
-my $skip_self_update_check = 0;
+my $skip_self_update_check = 1;
 if (-e "eqemu_server_skip_update.txt" || defined($ENV{'EQEMU_SERVER_SKIP_UPDATE'})) {
     print "[Info] Skipping self check\n";
     $skip_self_update_check = 1;
