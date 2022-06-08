@@ -1,0 +1,71 @@
+Create Debian 11 VM in Virtual Box
+
+21 GB Hard drive
+
+12 GB memory
+
+4 CPU
+
+Change the network configuration to be Bridged Adapter with the wifi adapter
+
+Start the VM & configure
+
+When setting up hard drive configuration - Make sure to chang the USED DEVICES ubuntu-lv hard drive size
+
+Find IP of server
+ - ip a 
+ 
+Install SSH
+
+ - sudo apt update
+ - sudo apt install openssh-server
+ - systemctl status sshd
+ - (If not running) sudo systemctl enable --now sshd
+ 
+Enable ssh 
+
+ - ssh-keygen -A
+ - systemctl restart sshd
+ 
+ (Might need to add firewall rule)
+ 
+SSH into box via CMD - ssh username@ip 
+
+Update mysql to allow remote connections for your specific username.  Change config bind-address and also grant privileges
+
+
+Follow instructions on https://docs.eqemu.io/server/installation/server-installation-linux/
+
+The correct install.sh is on the cybernine186/Server/ repo
+
+update the install.sh to use `make -j 4` if using 4 cores
+
+cd to /home/eqemu/server 
+
+Create eqemu_server_skip_update.txt
+Edit eqemu_server.pl to point to the Code repo
+Run  sudo perl eqemu_server.pl new_server to download DB
+
+If zone error, manually compile the zone executable 
+
+ - Tried compiling with `EQEMU_BUILD_SERVER` as an arg for make - also make sure make uses -j 4
+ 
+ Original issue - eqemu_config had legacy mode turned on, which was the cause of not getting past character select
+
+Fix 1 - add sql fields for pvp
+Fix 2 - Run 0.0.0.1.sql
+
+Current issue - Can't run forward or backwards, no npcs, extra races
+
+
+Ideas:
+
+Could try
+
+I think after the initial install, we set up our own github repo in the folder it installed into or maybe in a home directory and have a script that pulls latest & copies it over
+
+The client for rof2 was on an eqemulator forum post - maybe included in code folder?
+
+
+
+
