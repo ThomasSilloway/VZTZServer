@@ -1247,7 +1247,7 @@ sub copy_file
 
 sub do_linux_login_server_setup
 {
-    build_linux_source($_[0]);
+    # build_linux_source($_[0]);
 
     for my $file (@files) {
         $destination_file = $file;
