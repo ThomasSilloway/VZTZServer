@@ -159,8 +159,8 @@ mkdir $eqemu_server_directory/server_build
 mkdir $eqemu_server_directory/server_source
 
 # Back to server directory
-git clone --recurse-submodules https://github.com/cybernine186/Server.git $eqemu_server_directory/server
-git clone --recurse-submodules https://github.com/cybernine186/Code.git $eqemu_server_directory/server_source
+git clone --recurse-submodules https://github.com/ThomasSilloway/VZTZServer.git $eqemu_server_directory/server
+git clone --recurse-submodules https://github.com/ThomasSilloway/VZTZCode.git $eqemu_server_directory/server_source
 git clone --recurse-submodules https://github.com/cybernine186/EQEmuMaps.git $eqemu_server_directory/server/maps
 git clone --recurse-submodules https://github.com/cybernine186/quests.git $eqemu_server_directory/server/quests
 git clone --recurse-submodules https://github.com/cybernine186/peqphpeditor.git $eqemu_server_directory/peqeditor

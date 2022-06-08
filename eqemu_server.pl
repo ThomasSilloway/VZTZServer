@@ -21,7 +21,7 @@ use Time::HiRes qw(usleep);
 # variables
 #############################################
 my $install_repository_request_url = "https://raw.githubusercontent.com/cybernine186/eqemu-install-v2/master/";
-my $eqemu_repository_request_url   = "https://raw.githubusercontent.com/cybernine186/Server/master/";
+my $eqemu_repository_request_url   = "https://raw.githubusercontent.com/ThomasSilloway/VZTZServer/fix/install/";
 my $opcodes_path                   = "";
 my $patches_path                   = "";
 my $time_stamp                     = strftime('%m-%d-%Y', gmtime());
@@ -350,7 +350,7 @@ sub build_linux_source
     chdir($source_dir);
 
     if (!-d "$source_dir/.git") {
-        print `git clone --recurse-submodules https://github.com/cybernine186/Server.git $source_dir`;
+        print `git clone --recurse-submodules https://github.com/ThomasSilloway/VZTZServer.git $source_dir`;
     }
     else {
         print `git pull --recurse-submodules`;
