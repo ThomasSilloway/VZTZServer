@@ -16,6 +16,7 @@ WHERE rule_name = 'Expansion:CurrentExpansion';
 UPDATE rule_values SET rule_value=2 WHERE ruleset_id=1 AND rule_name="World:ExpansionSettings" LIMIT 1;
 UPDATE rule_values SET rule_value='false' WHERE ruleset_id=1 AND rule_name="World:UseClientBasedExpansionSettings" LIMIT 1;
 UPDATE rule_values SET rule_value=0 WHERE ruleset_id=1 AND rule_name="World:EnableTutorialButton" LIMIT 1;
+UPDATE rule_values SET rule_value=0 WHERE ruleset_id=1 AND rule_name="World:TutorialZoneID" LIMIT 1;
 
 -- Try to make starting zone the race zones - was -1 before
 UPDATE start_zones
